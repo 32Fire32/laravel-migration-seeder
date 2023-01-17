@@ -18,6 +18,21 @@
 <body>
 
     <h1>ciao</h1>
+    <ul>
+        @foreach ($trains as $train)
+            <li>
+                <h5>Azienda:{{ $train->agency }}</h5>
+                <h5>Stazione di partenza:{{ $train->departure_station }}</h5>
+                <h5>Stazione di arrivo:{{ $train->arrival_station }}</h5>
+                <h5>Orario di partenza: {{ $train->departure_time }}</h5>
+                <h5>Orario di arrivo:{{ $train->arrival_time }}</h5>
+                <h5>Numero del treno: {{ $train->train_code }}</h5>
+                <h5>Numero della carrozza: {{ $train->train_carriage_number }}</h5>
+                <h5>Ritardo: {{ $train->onTime }}</h5>
+                <h5>Stato: {{ $train->cancelled }}</h5>
+            </li>
+        @endforeach
+    </ul>
 </body>
 
 </html>

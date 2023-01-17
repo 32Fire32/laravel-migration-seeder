@@ -16,8 +16,6 @@
 </head>
 
 <body>
-
-    <h1>ciao</h1>
     <ul>
         @foreach ($trains as $train)
             <li>
@@ -28,8 +26,19 @@
                 <h5>Orario di arrivo:{{ $train->arrival_time }}</h5>
                 <h5>Numero del treno: {{ $train->train_code }}</h5>
                 <h5>Numero della carrozza: {{ $train->train_carriage_number }}</h5>
-                <h5>Ritardo: {{ $train->onTime }}</h5>
-                <h5>Stato: {{ $train->cancelled }}</h5>
+                {{-- <h5>Ritardo: {{ $train->onTime }}</h5> --}}
+
+                @if ($train->onTime === 1)
+                    <h5>Stato: In Orario</h5>
+                @else
+                    <h5>Stato: In Ritardo</h5>
+                @endif
+
+                @if ($train->cancelled === 0)
+                    <h5>Cancellato: No</h5>
+                @else
+                    <h5>Cancellato: Si</h5>
+                @endif
             </li>
         @endforeach
     </ul>

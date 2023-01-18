@@ -16,32 +16,37 @@
 </head>
 
 <body>
-    <ul>
-        @foreach ($trains as $train)
-            <li>
-                <h5>Azienda:{{ $train->agency }}</h5>
-                <h5>Stazione di partenza:{{ $train->departure_station }}</h5>
-                <h5>Stazione di arrivo:{{ $train->arrival_station }}</h5>
-                <h5>Orario di partenza: {{ $train->departure_time }}</h5>
-                <h5>Orario di arrivo:{{ $train->arrival_time }}</h5>
-                <h5>Numero del treno: {{ $train->train_code }}</h5>
-                <h5>Numero della carrozza: {{ $train->train_carriage_number }}</h5>
-                {{-- <h5>Ritardo: {{ $train->onTime }}</h5> --}}
+    <div class="container">
+        <ul class="row">
+            @foreach ($trains as $train)
+                <li class="card col-md-3 p-3">
+                    <h5><Strong>Azienda:</Strong> {{ $train->agency }}</h5>
+                    <h5><Strong>Stazione di partenza:</Strong> {{ $train->departure_station }}</h5>
+                    <h5><Strong>Stazione di arrivo:</Strong> {{ $train->arrival_station }}</h5>
+                    <h5><Strong>Giorno di partenza: </Strong> {{ $train->departure_day }}</h5>
+                    <h5><Strong>Giorno di arrivo:</Strong> {{ $train->arrival_day }}</h5>
+                    <h5><Strong>Orario di partenza: </Strong> {{ $train->departure_time }}</h5>
+                    <h5><Strong>Orario di arrivo:</Strong> {{ $train->arrival_time }}</h5>
+                    <h5><Strong>Numero del treno: </Strong>{{ $train->train_code }}</h5>
+                    <h5><Strong>Numero della carrozza: </Strong>{{ $train->train_carriage_number }}</h5>
+                    {{-- <h5>Ritardo: {{ $train->onTime }}</h5> --}}
 
-                @if ($train->onTime === 1)
-                    <h5>Stato: In Orario</h5>
-                @else
-                    <h5>Stato: In Ritardo</h5>
-                @endif
+                    @if ($train->onTime === 1)
+                        <h5><Strong>Stato:</Strong> In Orario</h5>
+                    @else
+                        <h5><Strong>Stato:</Strong> In Ritardo</h5>
+                    @endif
 
-                @if ($train->cancelled === 0)
-                    <h5>Cancellato: No</h5>
-                @else
-                    <h5>Cancellato: Si</h5>
-                @endif
-            </li>
-        @endforeach
-    </ul>
+                    @if ($train->cancelled === 0)
+                        <h5><Strong>Cancellato:</Strong> No</h5>
+                    @else
+                        <h5><Strong>Cancellato:</Strong> Si</h5>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
 </body>
 
 </html>
